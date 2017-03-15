@@ -1,0 +1,21 @@
+{
+  "name": "wallkey",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "bin": {
+    "wallkey": "./cli.js"
+  },
+  "description": "little cli",
+  "devDependencies": {
+    "standard": "^9.0.1"
+  },
+  "dependencies": {
+    "commander": "^2.9.0",
+    "mkdirp": "^0.5.1",
+    "ora": "^1.1.0",
+    "request": "^2.81.0",
+    "rimraf": "^2.6.1",
+    "wallpaper": "^2.4.0"
+  }
+}
