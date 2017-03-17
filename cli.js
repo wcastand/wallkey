@@ -71,7 +71,7 @@ if (program.clear) {
 
 function setWall (filename, spinner) {
   execFile(
-    './wallkey-cmd',
+    path.resolve(__dirname, './wallkey-cmd'),
     [filename],
     (error, stdout, stderr) => {
       if (error) {
