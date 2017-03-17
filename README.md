@@ -3,7 +3,7 @@ change desktop on osx with cmd, use unsplash or url
 
 ## Install
 
-```yarn global add wallkey```$
+```yarn global add wallkey```
 
 OR
 
