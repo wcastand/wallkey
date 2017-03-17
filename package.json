@@ -1,21 +1,35 @@
 {
   "name": "wallkey",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wcastand/wallkey.git"
+  },
   "bin": {
     "wallkey": "./cli.js"
   },
+  "scripts": {
+    "lint": "standard cli.js",
+    "lint:fix": "standard --fix cli.js"
+  },
+  "files": [
+    "cli.js",
+    "package.json",
+    "wallkey-cmd",
+    "default.png",
+    "README.md"
+  ],
+  "os" : [ "darwin" ],
   "description": "little cli",
   "devDependencies": {
-    "standard": "^9.0.1"
+    "standard": "9.0.1"
   },
   "dependencies": {
-    "commander": "^2.9.0",
-    "mkdirp": "^0.5.1",
-    "ora": "^1.1.0",
-    "request": "^2.81.0",
-    "rimraf": "^2.6.1",
-    "wallpaper": "^2.4.0"
-  }
+    "commander": "2.9.0",
+    "mkdirp": "0.5.1",
+    "ora": "1.1.0",
+    "request": "2.81.0",
+    "rimraf": "2.6.1"
+  },
+  "license": "MIT"
 }
