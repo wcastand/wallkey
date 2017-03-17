@@ -24,7 +24,6 @@ const dl = (uri, filename, callback) => {
     request(uri).pipe(fs.createWriteStream(filename + extt)).on('close', () => callback(filename + extt))
   })
 }
-const ext = path => path.split('.').pop() ? path.split('.').pop() : 'jpg'
 const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'))
 const basedir = homedir + '/.wallkey'
 
@@ -47,8 +46,7 @@ if (program.clear) {
     })
 } else if (program.url) {
   const spinner = ora('Downloading picture...').start()
-  const filename = `${basefile}${ext(program.url)}`
-  dl(program.url, filename, () => setWall(filename, spinner))
+  dl(program.url, basefile, (file) => setWall(file, spinner))
 } else {
   const spinner = ora('Downloading picture...').start()
   const query = program.query ? program.query : ''
