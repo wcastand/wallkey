@@ -10,15 +10,9 @@
   },
   "scripts": {
     "lint": "standard cli.js",
-    "lint:fix": "standard --fix cli.js"
+    "lint:fix": "standard --fix cli.js",
+    "patch-release": "npm version patch && npm publish && git push --follow-tags"
   },
-  "files": [
-    "cli.js",
-    "package.json",
-    "wallkey-cmd",
-    "default.png",
-    "README.md"
-  ],
   "os": [
     "darwin"
   ],
