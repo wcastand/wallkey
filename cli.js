@@ -2,6 +2,7 @@
 // /usr/local/bin/node
 
 const fs = require('fs')
+const path = require('path')
 const program = require('commander')
 const mkdirp = require('mkdirp')
 const request = require('request')
@@ -24,7 +25,7 @@ const dl = (uri, filename, callback) => {
     request(uri).pipe(fs.createWriteStream(filename + extt)).on('close', () => callback(filename + extt))
   })
 }
-const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'))
+const pkg = JSON.parse(fs.readFileSync(path.resolve(__dirname, './package.json'), 'utf-8'))
 const basedir = homedir + '/.wallkey'
 
 mkdirp(basedir)
