@@ -1,6 +1,6 @@
 {
   "name": "wallkey",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/wcastand/wallkey.git"
@@ -19,7 +19,9 @@
     "default.png",
     "README.md"
   ],
-  "os" : [ "darwin" ],
+  "os": [
+    "darwin"
+  ],
   "description": "little cli",
   "devDependencies": {
     "standard": "9.0.1"
