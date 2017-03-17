@@ -3,11 +3,11 @@
 
 const fs = require('fs')
 const program = require('commander')
-const wallpaper = require('wallpaper')
 const mkdirp = require('mkdirp')
 const request = require('request')
 const ora = require('ora')
 const rimraf = require('rimraf')
+const execFile = require('child_process').execFile
 
 const baseurl = 'https://api.unsplash.com/'
 const homedir = require('os').homedir()
@@ -48,11 +48,7 @@ if (program.clear) {
 } else if (program.url) {
   const spinner = ora('Downloading picture...').start()
   const filename = `${basefile}${ext(program.url)}`
-  dl(program.url, filename,
-    () => wallpaper.set(filename)
-      .then(() => spinner.succeed('Wallpaper changed.'))
-      .catch(err => spinner.fail(err))
-  )
+  dl(program.url, filename, () => setWall(filename, spinner))
 } else {
   const spinner = ora('Downloading picture...').start()
   const query = program.query ? program.query : ''
@@ -69,10 +65,21 @@ if (program.clear) {
   request(opt, (err, res, body) => {
     try {
       if (err) throw (new Error(err))
-      return dl(body.urls.full, basefile,
-        (file) => wallpaper.set(file)
-          .then(() => spinner.succeed('Wallpaper changed.'))
-      )
+      return dl(body.urls.full, basefile, (file) => setWall(file, spinner))
     } catch (e) { spinner.fail(e) }
   })
+}
+
+function setWall (filename, spinner) {
+  execFile(
+    './wallkey-cmd',
+    [filename],
+    (error, stdout, stderr) => {
+      if (error) {
+        spinner.fail(error)
+        throw error
+      }
+      spinner.succeed('Wallpaper changed.')
+    }
+  )
 }
